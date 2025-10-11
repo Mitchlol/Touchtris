@@ -5,7 +5,7 @@ Touchtris
 
 <h4>
   ·
-  <a href="(https://github.com/Mitchlol/Touchtris/raw/refs/heads/main/app/release/app-release.apk)">Android APK Link</a>
+  <a href="https://github.com/Mitchlol/Touchtris/raw/refs/heads/main/app/release/app-release.apk">Android APK Link</a>
   ·
 
 </h4>
