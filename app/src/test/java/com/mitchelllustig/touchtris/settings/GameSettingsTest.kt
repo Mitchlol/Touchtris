@@ -27,11 +27,11 @@ class GameSettingsTest {
     @Test
     fun `loadSettings reads values from SharedPreferences`() {
         // Arrange: Mock the return values for loading
-        every { prefs.getInt("startingLevel", 1) } returns 5
-        every { prefs.getInt("memoryCount", 0) } returns 2
-        every { prefs.getInt("nextPieceCount", 3) } returns 1
+        every { prefs.getInt("startingLevel", -1) } returns 5
+        every { prefs.getInt("memoryCount", -1) } returns 2
+        every { prefs.getInt("nextPieceCount", 1) } returns 1
         every { prefs.getInt("ghostPiece", 1) } returns 0
-        every { prefs.getInt("holdPiece", 1) } returns 0
+        every { prefs.getInt("holdPiece", 0) } returns 0
         every { prefs.getInt("randomBag", 0) } returns 1
 
         // Act: Create instance, which triggers loadSettings in init

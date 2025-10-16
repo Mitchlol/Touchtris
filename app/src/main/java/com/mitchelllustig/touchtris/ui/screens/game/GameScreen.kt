@@ -109,6 +109,7 @@ fun GameScreen(
         linesState = viewModel.lines.collectAsState(),
         quadsState = viewModel.quads.collectAsState(),
         droughtState = viewModel.drought.collectAsState(),
+        highlightCenter = viewModel.highlightCenter.collectAsState()
     )
 }
 
@@ -137,6 +138,7 @@ fun GameScreenContent(
     linesState: State<Int>,
     quadsState: State<Int>,
     droughtState: State<Int>,
+    highlightCenter: State<Boolean>,
 ) {
     val gameState by gameStateState
     val configuration = LocalConfiguration.current
@@ -160,6 +162,7 @@ fun GameScreenContent(
                 linesState = linesState,
                 quadsState = quadsState,
                 droughtState = droughtState,
+                highlightCenter = highlightCenter,
                 modifier = Modifier.weight(0.5f)
             )
             GameInput(
@@ -199,6 +202,7 @@ fun GameScreenContent(
                 linesState = linesState,
                 quadsState = quadsState,
                 droughtState = droughtState,
+                highlightCenter = highlightCenter,
                 modifier = Modifier.weight(0.5f)
             )
             GameInput(
@@ -239,6 +243,7 @@ private fun GameOutput(
     linesState: State<Int>,
     quadsState: State<Int>,
     droughtState: State<Int>,
+    highlightCenter: State<Boolean>,
     modifier: Modifier = Modifier
 ){
     val displayGrid by displayGridState
@@ -308,7 +313,8 @@ private fun GameOutput(
                 }
             }
             Box(
-                modifier = Modifier.fillMaxHeight()
+                modifier = Modifier.weight(0.5f)
+                    .fillMaxHeight()
                     .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {
@@ -324,7 +330,8 @@ private fun GameOutput(
                         currentPiece = currentPiece,
                         pieceOrientation = pieceOrientation,
                         level = level,
-                        gameState = gameState
+                        gameState = gameState,
+                        highlightCenter = highlightCenter.value
                     )
                     if (displayGrid) {
                         GridCanvas(
@@ -457,6 +464,7 @@ private fun GameScreenMock() {
     val dummyLines = remember { mutableStateOf(5) }
     val dummyQuads = remember { mutableStateOf(1) }
     val dummyDrought = remember { mutableStateOf(21) }
+    val dummyHighlight = remember { mutableStateOf(true) }
 
     val colorInfo = SquareColorInfo(Color.Blue, Color.White, false)
     for (i in 0..4) {
@@ -490,7 +498,8 @@ private fun GameScreenMock() {
             levelState = dummyLevel,
             linesState = dummyLines,
             quadsState = dummyQuads,
-            droughtState = dummyDrought
+            droughtState = dummyDrought,
+            highlightCenter = dummyHighlight
         )
     }
 }

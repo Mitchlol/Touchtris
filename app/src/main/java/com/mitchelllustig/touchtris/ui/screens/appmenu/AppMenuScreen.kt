@@ -57,10 +57,12 @@ fun AppMenuScreen(
         zeroPosition = viewModel.zeroPosition.collectAsState(),
         displayGrid = viewModel.displayGrid.collectAsState(),
         soundsEnabled = viewModel.soundsEnabled.collectAsState(),
+        highlightCenter = viewModel.highlightCenter.collectAsState(),
         onHapticEnabledChanged = viewModel::onHapticEnabledChanged,
         onZeroPositionChanged = viewModel::onZeroPositionChanged,
         onDisplayGridChanged = viewModel::onDisplayGridChanged,
         onSoundsEnabledChanged = viewModel::onSoundsEnabledChanged,
+        onHighlightCenterChanged = viewModel::onHighlightCenterChanged,
     )
 }
 
@@ -70,10 +72,12 @@ fun AppMenuScreenContent(
     zeroPosition: State<Boolean>,
     displayGrid: State<Boolean>,
     soundsEnabled: State<Boolean>,
+    highlightCenter: State<Boolean>,
     onHapticEnabledChanged: (Boolean) -> Unit,
     onZeroPositionChanged: (Boolean) -> Unit,
     onDisplayGridChanged: (Boolean) -> Unit,
     onSoundsEnabledChanged: (Boolean) -> Unit,
+    onHighlightCenterChanged: (Boolean) -> Unit,
 ) {
 
     val configuration = LocalConfiguration.current
@@ -97,10 +101,12 @@ fun AppMenuScreenContent(
                 zeroPosition = zeroPosition,
                 displayGrid = displayGrid,
                 soundsEnabled = soundsEnabled,
+                highlightCenter = highlightCenter,
                 onHapticEnabledChanged = onHapticEnabledChanged,
                 onZeroPositionChanged = onZeroPositionChanged,
                 onDisplayGridChanged = onDisplayGridChanged,
                 onSoundsEnabledChanged = onSoundsEnabledChanged,
+                onHighlightCenterChanged = onHighlightCenterChanged,
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(0.75f),
@@ -125,10 +131,12 @@ fun AppMenuScreenContent(
                 zeroPosition = zeroPosition,
                 displayGrid = displayGrid,
                 soundsEnabled = soundsEnabled,
+                highlightCenter = highlightCenter,
                 onHapticEnabledChanged = onHapticEnabledChanged,
                 onZeroPositionChanged = onZeroPositionChanged,
                 onDisplayGridChanged = onDisplayGridChanged,
                 onSoundsEnabledChanged = onSoundsEnabledChanged,
+                onHighlightCenterChanged = onHighlightCenterChanged,
                 modifier = Modifier
                     .weight(0.5f)
                     .fillMaxHeight(),
@@ -143,11 +151,13 @@ private fun SettingsList(
     zeroPosition: State<Boolean>,
     displayGrid: State<Boolean>,
     soundsEnabled: State<Boolean>,
+    highlightCenter: State<Boolean>,
     onHapticEnabledChanged: (Boolean) -> Unit,
     onZeroPositionChanged: (Boolean) -> Unit,
     onDisplayGridChanged: (Boolean) -> Unit,
     onSoundsEnabledChanged: (Boolean) -> Unit,
-    modifier: Modifier = Modifier
+    onHighlightCenterChanged: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
 ){
     Box(
         modifier = modifier,
@@ -161,6 +171,7 @@ private fun SettingsList(
             Triple("Sound", soundsEnabled, onSoundsEnabledChanged),
             Triple("Right Zero Label", zeroPosition, onZeroPositionChanged),
             Triple("Grid", displayGrid, onDisplayGridChanged),
+            Triple("Highlight Center", highlightCenter, onHighlightCenterChanged),
         )
         LazyColumn(
             state = listState,
@@ -282,10 +293,12 @@ private fun AppMenuScreenMock() {
             zeroPosition = remember { mutableStateOf(false) },
             displayGrid = remember { mutableStateOf(false) },
             soundsEnabled = remember { mutableStateOf(false) },
+            highlightCenter = remember { mutableStateOf(false) },
             onHapticEnabledChanged = { },
             onZeroPositionChanged = { },
             onDisplayGridChanged = { },
             onSoundsEnabledChanged = { },
+            onHighlightCenterChanged = { },
         )
     }
 }

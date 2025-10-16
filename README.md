@@ -12,9 +12,7 @@ Touchtris
 
 A tetris clone with a twist, instead of pieces falling, they timeout, and appear in place. The buttons operate like a state machine. Instead of tucks and spins, pieces will always fall though others to the lowest open space they fit in.
 
-Designed to help memorize the precise number of taps needed to place any piece in any position. 
-
-Built as a chance to mess with compose.
+Designed to help memorize the precise number of taps needed to place any piece in any position.
 <div>
 <img src="./screenshots/Screenshot_20251010_164038.png" width="100"/>
 <img src="./screenshots/Screenshot_20251010_164047.png" width="100"/>

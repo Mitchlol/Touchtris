@@ -112,13 +112,19 @@ fun Canvas.drawTouchtrisPiece(
     piece: Pieces = Pieces.T,
     orientation: Orientations = Orientations.zero,
     glow: Boolean = false,
+    highlightCenter: Boolean = false,
 ) {
     moveSquare(size, x, y){
         for (position in piece.getSubPositions(orientation)){
             // Pieces are normally constrained to bounds, but ghost piece can overflow, this stops it, but renders the inbounds squares.
             if(y + position.y.toFloat() >= 0){
                 moveSquare(size, position.x.toFloat(), position.y.toFloat()) {
-                   drawTouchtrisSquare(size, colorInfo, glow)
+                    if(highlightCenter && position.x == 0 && position.y == 0){
+                        val highlightColorInfo = colorInfo.copy(dark = !colorInfo.dark)
+                        drawTouchtrisSquare(size, highlightColorInfo, glow)
+                    }else{
+                        drawTouchtrisSquare(size, colorInfo, glow)
+                    }
                 }
             }
         }

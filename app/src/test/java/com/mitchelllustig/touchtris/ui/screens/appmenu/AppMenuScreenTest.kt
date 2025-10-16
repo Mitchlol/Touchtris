@@ -31,7 +31,9 @@ private fun AppMenuScreenMock() {
         displayGrid = mutableStateOf(true),
         onDisplayGridChanged = {},
         soundsEnabled = mutableStateOf(true),
-        onSoundsEnabledChanged = {}
+        onSoundsEnabledChanged = {},
+        highlightCenter = mutableStateOf(true),
+        onHighlightCenterChanged = {}
     )
 }
 
@@ -57,6 +59,7 @@ class AppMenuScreenTest {
         composeTestRule.onNodeWithText("Sound").assertIsDisplayed()
         composeTestRule.onNodeWithText("Right Zero Label").assertIsDisplayed()
         composeTestRule.onNodeWithText("Grid").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Highlight Center").assertIsDisplayed()
     }
 
     @Test
@@ -71,7 +74,8 @@ class AppMenuScreenTest {
                     // Dummy values for other states
                     zeroPosition = mutableStateOf(false), onZeroPositionChanged = {},
                     displayGrid = mutableStateOf(false), onDisplayGridChanged = {},
-                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {}
+                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {},
+                    highlightCenter = mutableStateOf(true), onHighlightCenterChanged = {}
                 )
             }
         }
@@ -95,7 +99,8 @@ class AppMenuScreenTest {
                     // Dummy values for other states
                     hapticEnabled = mutableStateOf(false), onHapticEnabledChanged = {},
                     zeroPosition = mutableStateOf(false), onZeroPositionChanged = {},
-                    displayGrid = mutableStateOf(false), onDisplayGridChanged = {}
+                    displayGrid = mutableStateOf(false), onDisplayGridChanged = {},
+                    highlightCenter = mutableStateOf(true), onHighlightCenterChanged = {}
                 )
             }
         }
@@ -118,7 +123,8 @@ class AppMenuScreenTest {
                      // Dummy values for other states
                     hapticEnabled = mutableStateOf(false), onHapticEnabledChanged = {},
                     zeroPosition = mutableStateOf(false), onZeroPositionChanged = {},
-                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {}
+                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {},
+                    highlightCenter = mutableStateOf(true), onHighlightCenterChanged = {}
                 )
             }
         }
@@ -138,12 +144,34 @@ class AppMenuScreenTest {
                      // Dummy values for other states
                     hapticEnabled = mutableStateOf(false), onHapticEnabledChanged = {},
                     displayGrid = mutableStateOf(false), onDisplayGridChanged = {},
-                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {}
+                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {},
+                    highlightCenter = mutableStateOf(true), onHighlightCenterChanged = {}
                 )
             }
         }
 
         // Assert
         composeTestRule.onNodeWithContentDescription("Decrease Right Zero Label").assertIsNotEnabled()
+    }
+
+    @Test
+    fun `whenHighlightCenterIsOff_decreaseButtonIsDisabled`() {
+        // Arrange
+        composeTestRule.setContent {
+            TouchtrisTheme {
+                AppMenuScreenContent(
+                    highlightCenter = mutableStateOf(false),
+                    onHighlightCenterChanged = {},
+                    // Dummy values for other states
+                    hapticEnabled = mutableStateOf(false), onHapticEnabledChanged = {},
+                    zeroPosition = mutableStateOf(false), onZeroPositionChanged = {},
+                    displayGrid = mutableStateOf(false), onDisplayGridChanged = {},
+                    soundsEnabled = mutableStateOf(false), onSoundsEnabledChanged = {},
+                )
+            }
+        }
+//        print(composeTestRule.onRoot().printToString(99))
+        // Assert
+        composeTestRule.onNodeWithContentDescription("Decrease Highlight Center").assertIsNotEnabled()
     }
 }

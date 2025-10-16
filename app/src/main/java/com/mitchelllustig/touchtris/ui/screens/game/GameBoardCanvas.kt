@@ -111,7 +111,8 @@ fun GameBoardCanvas(
     currentPiece: Pieces,
     pieceOrientation: Orientations,
     level: Int,
-    gameState: GameState
+    gameState: GameState,
+    highlightCenter: Boolean
 ) {
     Canvas(
         modifier = modifier,
@@ -140,6 +141,7 @@ fun GameBoardCanvas(
                 currentPiece,
                 Orientations.zero,
                 true,
+                highlightCenter,
             )
             if (ghostPosition != null){
                 canvas.drawTouchtrisPiece(

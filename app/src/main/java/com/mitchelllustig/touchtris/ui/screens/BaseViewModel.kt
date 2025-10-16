@@ -15,11 +15,13 @@ open class BaseViewModel @Inject constructor(
     private val _zeroPosition = MutableStateFlow(appSettings.zeroPosition)
     private val _displayGrid = MutableStateFlow(appSettings.displayGrid)
     private val _soundsEnabled = MutableStateFlow(appSettings.soundsEnabled)
+    private val _highlightCenter = MutableStateFlow(appSettings.highlightCenter)
 
     val hapticEnabled = _hapticEnabled.asStateFlow()
     val zeroPosition = _zeroPosition.asStateFlow()
     val displayGrid = _displayGrid.asStateFlow()
     val soundsEnabled = _soundsEnabled.asStateFlow()
+    val highlightCenter = _highlightCenter.asStateFlow()
 
     fun onHapticEnabledChanged (value: Boolean){ _hapticEnabled.value = value}
     fun onZeroPositionChanged (value: Boolean){ _zeroPosition.value = value}
@@ -28,6 +30,7 @@ open class BaseViewModel @Inject constructor(
         _soundsEnabled.value = value
         AudioPlayer.audioEnabled = _soundsEnabled.value
     }
+    fun onHighlightCenterChanged (value: Boolean){ _highlightCenter.value = value}
 
     fun refreshAppSettings(){
         appSettings.loadSettings()
@@ -35,6 +38,7 @@ open class BaseViewModel @Inject constructor(
         _zeroPosition.value = appSettings.zeroPosition
         _displayGrid.value = appSettings.displayGrid
         _soundsEnabled.value = appSettings.soundsEnabled
+        _highlightCenter.value = appSettings.highlightCenter
 
     }
 
@@ -43,6 +47,7 @@ open class BaseViewModel @Inject constructor(
         appSettings.zeroPosition = zeroPosition.value
         appSettings.displayGrid = displayGrid.value
         appSettings.soundsEnabled = soundsEnabled.value
+        appSettings.highlightCenter = highlightCenter.value
         appSettings.saveSettings()
     }
 

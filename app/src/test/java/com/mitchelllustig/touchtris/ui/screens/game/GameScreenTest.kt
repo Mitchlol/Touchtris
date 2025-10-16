@@ -66,7 +66,8 @@ class GameScreenTest {
                     levelState = mutableStateOf(9),
                     linesState = mutableStateOf(5),
                     quadsState = mutableStateOf(1),
-                    droughtState = mutableStateOf(21)
+                    droughtState = mutableStateOf(21),
+                    highlightCenter = mutableStateOf(false)
                 )
             }
         }
@@ -118,7 +119,8 @@ class GameScreenTest {
                     levelState = mutableStateOf(1),
                     linesState = mutableStateOf(0),
                     quadsState = mutableStateOf(0),
-                    droughtState = mutableStateOf(0)
+                    droughtState = mutableStateOf(0),
+                    highlightCenter = mutableStateOf(false)
                 )
             }
         }

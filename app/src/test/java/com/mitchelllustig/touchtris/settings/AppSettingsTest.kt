@@ -28,9 +28,10 @@ class AppSettingsTest {
     fun `loadSettings reads values from SharedPreferences`() {
         // Arrange: Mock the return values for loading
         every { prefs.getBoolean("hapticEnabled", true) } returns false
-        every { prefs.getBoolean("zeroPosition", false) } returns true
+        every { prefs.getBoolean("zeroPosition", true) } returns true
         every { prefs.getBoolean("displayGrid", true) } returns false
         every { prefs.getBoolean("soundsEnabled", true) } returns false
+        every { prefs.getBoolean("highlightCenter", true) } returns false
 
         // Act: Create instance, which triggers loadSettings in init
         appSettings = AppSettings(prefs)
@@ -40,6 +41,7 @@ class AppSettingsTest {
         assertEquals(true, appSettings.zeroPosition)
         assertEquals(false, appSettings.displayGrid)
         assertEquals(false, appSettings.soundsEnabled)
+        assertEquals(false, appSettings.highlightCenter)
     }
 
     @Test
@@ -53,6 +55,7 @@ class AppSettingsTest {
         appSettings.zeroPosition = true
         appSettings.displayGrid = false
         appSettings.soundsEnabled = false
+        appSettings.highlightCenter = false
         appSettings.saveSettings()
 
         // Assert: Verify that putBoolean was called for each setting with the correct value
@@ -60,6 +63,7 @@ class AppSettingsTest {
         verify { editor.putBoolean("zeroPosition", true) }
         verify { editor.putBoolean("displayGrid", false) }
         verify { editor.putBoolean("soundsEnabled", false) }
+        verify { editor.putBoolean("highlightCenter", false) }
         verify { editor.apply() }
     }
 }
