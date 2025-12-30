@@ -7,12 +7,15 @@ Touchtris
   ·
   <a href="https://github.com/Mitchlol/Touchtris/raw/refs/heads/main/app/release/app-release.apk">Android APK Link</a>
   ·
-
 </h4>
 
 A tetris clone with a twist, instead of pieces falling, they timeout, and appear in place. The buttons operate like a state machine. Instead of tucks and spins, pieces will always fall though others to the lowest open space they fit in.
 
 Designed to help memorize the precise number of taps needed to place any piece in any position.
+
+Every piece placement requires at most 2 button presses which efficient and great for touchscreens.
+
+Additionally this game includes a memory mode where the previously placed pieces are invisible.
 <div>
 <img src="./screenshots/Screenshot_20251010_164038.png" width="100"/>
 <img src="./screenshots/Screenshot_20251010_164047.png" width="100"/>
@@ -22,14 +25,14 @@ Designed to help memorize the precise number of taps needed to place any piece i
 <img src="./screenshots/Screenshot_20251010_164215.png" width="100"/>
 </div>
 
-App uses system wide dark mode and colors for it's styling
+App uses system wide dark mode and colors for it's styling.
 <div>
 <img src="./screenshots/Screenshot_20251010_163759.png" width="100"/>
 <img src="./screenshots/Screenshot_20251010_164003.png" width="100"/>
 <img src="./screenshots/Screenshot_20251010_164038.png" width="100"/>
 </div>
 
-And supports landscape mode for lulz
+And supports landscape mode.
 <div>
 <img src="./screenshots/Screenshot_20251010_164229.png" width="200"/>
 <img src="./screenshots/Screenshot_20251010_164238.png" width="200"/>
